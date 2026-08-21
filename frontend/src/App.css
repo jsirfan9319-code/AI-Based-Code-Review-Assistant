@@ -1,0 +1,1081 @@
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  background: #090b14;
+  color: #e5e7eb;
+}
+
+button,
+select,
+textarea {
+  font: inherit;
+}
+
+
+/* =========================================================
+   APP
+========================================================= */
+
+.app {
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(112, 67, 190, 0.12),
+      transparent 35%
+    ),
+    #090b14;
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.topbar {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #242838;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-icon {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background: linear-gradient(
+    135deg,
+    #7c3aed,
+    #a855f7
+  );
+
+  font-size: 22px;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.brand p {
+  margin: 4px 0 0;
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: #a7f3d0;
+  font-size: 14px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+  background: #22c55e;
+
+  box-shadow:
+    0 0 0 4px rgba(34, 197, 94, 0.1);
+}
+
+
+/* =========================================================
+   WORKSPACE
+========================================================= */
+
+.workspace {
+  max-width: 1400px;
+  margin: 0 auto;
+
+  padding: 32px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+
+/* =========================================================
+   PANELS
+========================================================= */
+
+.code-panel,
+.review-panel {
+  background: #0e121f;
+
+  border: 1px solid #252b3b;
+  border-radius: 16px;
+
+  min-height: 700px;
+
+  overflow: hidden;
+}
+
+.panel-top,
+.review-panel-top {
+  padding: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid #252b3b;
+}
+
+.eyebrow {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: #8b5cf6;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 0.1em;
+}
+
+.panel-top h2,
+.review-panel-top h2 {
+  margin: 0;
+
+  font-size: 22px;
+}
+
+
+/* =========================================================
+   LANGUAGE SELECT
+========================================================= */
+
+select {
+  padding: 10px 14px;
+
+  color: #e5e7eb;
+  background: #141927;
+
+  border: 1px solid #30384b;
+  border-radius: 8px;
+
+  outline: none;
+
+  cursor: pointer;
+}
+
+select:focus {
+  border-color: #8b5cf6;
+}
+
+
+/* =========================================================
+   CODE EDITOR
+========================================================= */
+
+.editor-wrapper {
+  margin: 24px;
+
+  border: 1px solid #2c3446;
+  border-radius: 12px;
+
+  overflow: hidden;
+
+  background: #0a0f1c;
+}
+
+.editor-header {
+  height: 44px;
+
+  padding: 0 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #121827;
+
+  border-bottom: 1px solid #252d40;
+
+  color: #94a3b8;
+
+  font-size: 13px;
+}
+
+.window-dots {
+  display: flex;
+  gap: 7px;
+}
+
+.window-dots span {
+  width: 10px;
+  height: 10px;
+
+  border-radius: 50%;
+
+  background: #475569;
+}
+
+textarea {
+  width: 100%;
+  height: 470px;
+
+  padding: 20px;
+
+  resize: vertical;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  color: #e5e7eb;
+
+  font-family:
+    "Fira Code",
+    "Cascadia Code",
+    Consolas,
+    monospace;
+
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+textarea::placeholder {
+  color: #64748b;
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.actions {
+  padding: 0 24px 24px;
+
+  display: flex;
+  gap: 12px;
+}
+
+.review-button,
+.clear-button,
+.copy-button {
+  border: none;
+
+  border-radius: 9px;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.review-button:hover,
+.clear-button:hover,
+.copy-button:hover {
+  transform: translateY(-1px);
+}
+
+.review-button:disabled,
+.clear-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.review-button {
+  flex: 1;
+
+  padding: 14px 20px;
+
+  background: linear-gradient(
+    135deg,
+    #7c3aed,
+    #9333ea
+  );
+
+  color: white;
+
+  font-weight: 700;
+}
+
+.clear-button {
+  padding: 14px 22px;
+
+  background: #1a2030;
+
+  border: 1px solid #30384b;
+
+  color: #cbd5e1;
+}
+
+.copy-button {
+  padding: 10px 16px;
+
+  background: #7c3aed;
+
+  color: white;
+
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   REVIEW CONTENT
+========================================================= */
+
+.review-content {
+  padding: 28px;
+
+  min-height: 590px;
+
+  overflow-y: auto;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.empty-review,
+.loading-review {
+  min-height: 500px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  color: #94a3b8;
+}
+
+.empty-review h3,
+.loading-review h3 {
+  margin: 20px 0 8px;
+
+  color: #e5e7eb;
+
+  font-size: 20px;
+}
+
+.empty-review p,
+.loading-review p {
+  max-width: 420px;
+
+  line-height: 1.7;
+}
+
+.ai-orb,
+.loading-orb {
+  width: 72px;
+  height: 72px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(139, 92, 246, 0.4),
+      rgba(139, 92, 246, 0.08)
+    );
+
+  border: 1px solid rgba(139, 92, 246, 0.4);
+
+  font-size: 30px;
+
+  position: relative;
+}
+
+.review-features {
+  margin-top: 24px;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  gap: 10px;
+}
+
+.review-features span {
+  padding: 7px 12px;
+
+  background: #141927;
+
+  border: 1px solid #283044;
+
+  border-radius: 20px;
+
+  font-size: 13px;
+
+  color: #cbd5e1;
+}
+
+
+/* =========================================================
+   MARKDOWN REVIEW
+   IMPORTANT: LEFT ALIGNED
+========================================================= */
+
+.markdown-review {
+  width: 100%;
+
+  color: #d7dce5;
+
+  text-align: left;
+
+  line-height: 1.8;
+
+  font-size: 15px;
+}
+
+
+/* MAIN TITLE */
+
+.markdown-review h1 {
+  margin: 0 0 28px;
+
+  padding-bottom: 16px;
+
+  color: #f8fafc;
+
+  font-size: 32px;
+
+  border-bottom: 1px solid #2b3345;
+}
+
+
+/* MAIN SECTIONS */
+
+.markdown-review h2 {
+  margin-top: 34px;
+  margin-bottom: 18px;
+
+  padding-bottom: 10px;
+
+  color: #f1f5f9;
+
+  font-size: 22px;
+
+  border-bottom: 1px solid #2b3345;
+}
+
+
+/* ISSUES */
+
+.markdown-review h3 {
+  margin-top: 26px;
+  margin-bottom: 14px;
+
+  color: #c4b5fd;
+
+  font-size: 18px;
+}
+
+
+/* PARAGRAPHS */
+
+.markdown-review p {
+  margin: 10px 0 16px;
+
+  text-align: left;
+}
+
+
+/* BOLD LABELS */
+
+.markdown-review strong {
+  color: #f8fafc;
+}
+
+
+/* SEPARATOR */
+
+.markdown-review hr {
+  margin: 28px 0;
+
+  border: none;
+  border-top: 1px solid #293247;
+}
+
+
+/* LISTS */
+
+.markdown-review ul,
+.markdown-review ol {
+  padding-left: 24px;
+
+  margin: 12px 0 20px;
+}
+
+
+/* INLINE CODE */
+
+.markdown-review :not(pre) > code {
+  padding: 3px 7px;
+
+  border-radius: 5px;
+
+  background: #1b2232;
+
+  border: 1px solid #30394d;
+
+  color: #c4b5fd;
+
+  font-family:
+    "Fira Code",
+    Consolas,
+    monospace;
+
+  font-size: 0.9em;
+}
+
+
+/* CODE BLOCK */
+
+.markdown-review pre {
+  margin: 20px 0;
+
+  padding: 18px;
+
+  overflow-x: auto;
+
+  border-radius: 10px;
+
+  background: #090d17;
+
+  border: 1px solid #2a3245;
+}
+
+.markdown-review pre code {
+  padding: 0;
+
+  background: transparent;
+
+  border: none;
+
+  color: #dbeafe;
+
+  font-family:
+    "Fira Code",
+    "Cascadia Code",
+    Consolas,
+    monospace;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   STREAMING CURSOR
+========================================================= */
+
+.streaming-cursor {
+  display: inline-block;
+
+  width: 8px;
+  height: 18px;
+
+  margin-left: 4px;
+
+  vertical-align: middle;
+
+  background: #a78bfa;
+
+  animation: blink 0.9s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.button-spinner {
+  width: 16px;
+  height: 16px;
+
+  display: inline-block;
+
+  margin-right: 8px;
+
+  vertical-align: middle;
+
+  border: 2px solid
+    rgba(255, 255, 255, 0.35);
+
+  border-top-color: white;
+
+  border-radius: 50%;
+
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.pulse {
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  border-radius: 50%;
+
+  border: 2px solid #8b5cf6;
+
+  animation: pulse-animation 1.5s infinite;
+}
+
+@keyframes pulse-animation {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+
+/* =========================================================
+   REVIEW FOOTER
+========================================================= */
+
+.review-footer {
+  padding: 16px 24px;
+
+  display: flex;
+  justify-content: space-between;
+
+  border-top: 1px solid #252b3b;
+
+  color: #94a3b8;
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .code-panel,
+  .review-panel {
+    min-height: auto;
+  }
+
+  textarea {
+    height: 350px;
+  }
+}
+
+
+@media (max-width: 650px) {
+  .topbar {
+    padding: 18px;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 16px;
+  }
+
+  .workspace {
+    padding: 16px;
+  }
+
+  .panel-top,
+  .review-panel-top {
+    padding: 18px;
+  }
+
+  .review-content {
+    padding: 18px;
+  }
+
+  .markdown-review h1 {
+    font-size: 26px;
+  }
+
+  .markdown-review h2 {
+    font-size: 20px;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+}
+/* ============================= */
+/* CODEMIRROR EDITOR */
+/* ============================= */
+
+.editor-wrapper {
+  overflow: hidden;
+}
+
+.editor-wrapper .cm-editor {
+  height: 500px;
+  font-size: 15px;
+}
+
+.editor-wrapper .cm-scroller {
+  overflow: auto;
+  font-family:
+    "JetBrains Mono",
+    "Fira Code",
+    Consolas,
+    monospace;
+}
+
+.editor-wrapper .cm-gutters {
+  border-right: 1px solid #2a3448;
+}
+
+.editor-wrapper .cm-activeLine {
+  background-color: rgba(139, 92, 246, 0.08);
+}
+
+.editor-wrapper .cm-activeLineGutter {
+  background-color: rgba(139, 92, 246, 0.12);
+}
+/* =========================================================
+   ISSUE SUMMARY
+========================================================= */
+
+.issue-summary {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 12px;
+
+  margin-bottom: 28px;
+}
+
+
+.summary-card {
+  min-height: 96px;
+
+  padding: 16px;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  border: 1px solid #2a3346;
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(30, 36, 52, 0.9),
+      rgba(15, 19, 32, 0.95)
+    );
+
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+
+.summary-card:hover {
+  transform: translateY(-2px);
+
+  border-color: #46516a;
+
+  box-shadow:
+    0 10px 25px
+    rgba(0, 0, 0, 0.2);
+}
+
+
+.summary-label {
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  color: #94a3b8;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  letter-spacing: 0.02em;
+}
+
+
+.summary-card strong {
+  margin-top: 10px;
+
+  color: #f8fafc;
+
+  font-size: 30px;
+  font-weight: 700;
+
+  line-height: 1;
+}
+
+
+/* =========================================================
+   HIGH SEVERITY
+========================================================= */
+
+.high-card {
+  border-color:
+    rgba(239, 68, 68, 0.28);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(127, 29, 29, 0.2),
+      rgba(15, 19, 32, 0.95)
+    );
+}
+
+
+.high-card:hover {
+  border-color:
+    rgba(239, 68, 68, 0.55);
+}
+
+
+.high-card strong {
+  color: #f87171;
+}
+
+
+/* =========================================================
+   MEDIUM SEVERITY
+========================================================= */
+
+.medium-card {
+  border-color:
+    rgba(245, 158, 11, 0.28);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(120, 53, 15, 0.2),
+      rgba(15, 19, 32, 0.95)
+    );
+}
+
+
+.medium-card:hover {
+  border-color:
+    rgba(245, 158, 11, 0.55);
+}
+
+
+.medium-card strong {
+  color: #fbbf24;
+}
+
+
+/* =========================================================
+   LOW SEVERITY
+========================================================= */
+
+.low-card {
+  border-color:
+    rgba(59, 130, 246, 0.28);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(30, 58, 138, 0.18),
+      rgba(15, 19, 32, 0.95)
+    );
+}
+
+
+.low-card:hover {
+  border-color:
+    rgba(59, 130, 246, 0.55);
+}
+
+
+.low-card strong {
+  color: #60a5fa;
+}
+
+
+/* =========================================================
+   TOTAL ISSUES
+========================================================= */
+
+.total-card {
+  border-color:
+    rgba(139, 92, 246, 0.32);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(91, 33, 182, 0.2),
+      rgba(15, 19, 32, 0.95)
+    );
+}
+
+
+.total-card:hover {
+  border-color:
+    rgba(139, 92, 246, 0.65);
+}
+
+
+.total-card strong {
+  color: #c4b5fd;
+}
+
+
+/* =========================================================
+   ISSUE SUMMARY RESPONSIVE
+========================================================= */
+
+@media (max-width: 1100px) {
+  .issue-summary {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+}
+
+
+@media (max-width: 650px) {
+  .issue-summary {
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+  }
+
+
+  .summary-card {
+    min-height: 82px;
+  }
+
+
+  .summary-card strong {
+    font-size: 26px;
+  }
+}
+/* ============================= */
+/* HISTORY PANEL */
+/* ============================= */
+
+.history-panel {
+  margin-top: 24px;
+  padding: 24px;
+  background: #111827;
+  border: 1px solid #2a3650;
+  border-radius: 16px;
+}
+
+.history-panel h2 {
+  margin: 0 0 20px;
+  font-size: 22px;
+}
+
+.history-item {
+  padding: 16px;
+  margin-bottom: 12px;
+  background: #161f30;
+  border: 1px solid #2a3650;
+  border-radius: 12px;
+}
+
+.history-item h3 {
+  margin: 0 0 8px;
+  text-transform: capitalize;
+}
+
+.history-item p {
+  margin: 0 0 12px;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.history-item button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #7c3aed;
+  color: white;
+  font-weight: 600;
+}
+
+.history-item button:hover {
+  opacity: 0.9;
+}
+/* Fix long code overflow in review report */
+.review-content pre {
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.review-content code {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
