@@ -18,7 +18,7 @@ if not GITHUB_TOKEN:
 
 
 client = OpenAI(
-    base_url="http://localhost:20128/v1",
+    base_url="http://host.docker.internal:20128/v1",
     api_key="omniroute"
 )
 
@@ -32,10 +32,12 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5174",
-        "http://127.0.0.1:5174"
-    ],
+   allow_origins=[
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "http://localhost:5174",
+    "http://127.0.0.1:5174"
+],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -241,7 +243,6 @@ Language: {request.language}
 """
 
 
-
     def generate_review():
         try:
             stream = client.chat.completions.create(
@@ -264,11 +265,13 @@ Language: {request.language}
                 ):
                     yield chunk.choices[0].delta.content
 
-        except Exception:
+        except Exception as e:
+            print("AI ERROR:", repr(e))
+
             yield (
                 "\n\n# Error\n\n"
-                "Unable to complete the code review. "
-                "Please check that the AI service is running."
+                "Unable to complete the code review.\n\n"
+                f"Details: {str(e)}"
             )
 
     return StreamingResponse(
