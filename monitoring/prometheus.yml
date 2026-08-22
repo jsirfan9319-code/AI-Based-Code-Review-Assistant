@@ -1,0 +1,7 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: "devops-monitoring-app-kubernetes"
+    static_configs:
+      - targets: ["devops-monitoring-app:5000"]
